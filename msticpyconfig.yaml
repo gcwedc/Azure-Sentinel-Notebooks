@@ -1,63 +1,52 @@
-## For details of how to configure settings in this file, please see
-## https://msticpy.readthedocs.io/en/latest/getting_started/msticpyconfig.html
-##
-QueryDefinitions:
 AzureSentinel:
   Workspaces:
-    # # Add your default workspace and tenant here (uncomment next 3 lines)
-    # Default:
-    #   WorkspaceId: your-workspace-id
-    #   TenantId: your-tenant-id
-    # # Add additional named workspaces here - you can use these in the notebook
-    # # with the syntax ws_config = WorkspaceConfig(workspace="WorkspaceAlpha")
-    # # Each section must have a unique name. You can have any number of 
-    # # workspace definitions
-    # WorkspaceAlpha:
-    #   WorkspaceId: alpha-workspace-id
-    #   TenantId: alpha-tenant-id
-TIProviders:
-  # # Threat Intel service parameters are added here
-  # # The Args section usually includes the authentication
-  # # parameters: AuthKey (the API key) and in some cases others 
-  # # (e.g. XForce requires an ApiID key as well). The "AuthKey" name
-  # # will be mapped onto the name used by the service, you should not
-  # # to change this - e.g. some providers call this ApiKey. 
-  # OTX:
-  #   Args:
-  #     AuthKey: OTX-API-Key
-  #   Primary: True
-  #   Provider: "OTX"
-  # VirusTotal:
-  #   Args:
-  #     AuthKey: VT-API-Key
-  #   Primary: False
-  #   Provider: "VirusTotal"
-  # XForce:
-  #   Args:
-  #     ApiID: XForce-API-ID
-  #     AuthKey: XForce-Auth-Key
-  #   Primary: True
-  #   Provider: "XForce"
-  # AzureSentinel:
-  #  # The Microsoft sentinel TI data can be in a different workspace
-  #  # to the workspace where your data is. If it is different,
-  #  # both workspaces must be in the same tenant. This is a limitation
-  #  # of the Log Analytics client library.
-  #   Args:
-  #     workspace_id: your-workspace-id
-  #     tenant_id: your-tenant-id
-  #   Primary: True
-  #   Provider: "AzSTI"
+    Default:
+      ResourceGroup: production_resource_group
+      SubscriptionId: 37b41c49-f29e-44fa-90f4-937060c237c9
+      TenantId: a4d0c603-9c7f-4293-b89c-a08c1a8eb571
+      WorkspaceId: a97557b5-b341-450d-ac71-cdd5658a7e03
+      WorkspaceName: log-analytics-workspace-wedc
+      user_alias: gcadmin@corp.wedc.org
+DataProviders:
+  LocalData:
+    data_paths: []
+KeyVault:
+  Authority: global
+  AzureRegion: centralus
+  ResourceGroup: Production_Resource_Group
+  SubscriptionId: 37b41c49-f29e-44fa-90f4-937060c237c9
+  TenantId: a4d0c603-9c7f-4293-b89c-a08c1a8eb571
+  UseKeyring: true
+  VaultName: key-vault-prod-wedc
 OtherProviders:
-  # # Other data providers
-  # GeoIPLite:
-  #   Args:
-  #     AuthKey:
-  #       EnvironmentVar: "MAXMIND_AUTH"
-  #     DBFolder: "~/.msticpy"
-  #   Provider: "GeoLiteLookup"
-  # IPStack:
-  #   Args:
-  #     AuthKey:
-  #       EnvironmentVar: "IPSTACK_AUTH"
-  #   Provider: "IPStackLookup"
+  GeoIPLite:
+    Args:
+      AuthKey: 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
+      DBFolder: ~/.msticpy
+    Provider: GeoLiteLookup
+  IPStack:
+    Args:
+      AuthKey: 0c2d991997eaf00ca1496f7f87b4b398
+    Provider: IPStackLookup
+TIProviders:
+  AzureSentinel:
+    Args:
+      TenantID: a4d0c603-9c7f-4293-b89c-a08c1a8eb571
+      WorkspaceID: a97557b5-b341-450d-ac71-cdd5658a7e03
+    Primary: true
+    Provider: AzSTI
+  VirusTotal:
+    Args:
+      AuthKey: 0a8efd3bcc46ddab579ef5f1d1969913168eb2a822096060873c16a8bee66027
+      UseVT3PrivateAPI: false
+    Primary: true
+    Provider: VirusTotal
+  XForce:
+    Args:
+      ApiID: 49fc7057-5fdb-466f-a3ea-3ac6d2cbbf72
+      AuthKey: eebcf0e8-8c66-48e3-ba8f-0f50d25299f5
+    Primary: false
+    Provider: XForce
+UserDefaults:
+  LoadComponents: {}
+  QueryProviders: {}

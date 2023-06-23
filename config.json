@@ -1,7 +1,8 @@
 {
-  "tenant_id": "{{cookiecutter.tenant_id}}",
-  "subscription_id": "{{cookiecutter.subscription_id}}",
-  "resource_group": "{{cookiecutter.resource_group}}",
-  "workspace_id": "{{cookiecutter.workspace_id}}",
-  "workspace_name": "{{cookiecutter.workspace_name}}"
+  "tenant_id": "a4d0c603-9c7f-4293-b89c-a08c1a8eb571",
+  "subscription_id": "37b41c49-f29e-44fa-90f4-937060c237c9",
+  "resource_group": "production_resource_group",
+  "workspace_id": "a97557b5-b341-450d-ac71-cdd5658a7e03",
+  "workspace_name": "log-analytics-workspace-wedc",
+  "user_alias": "gcadmin@corp.wedc.org"
 }
